@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'android_dialog.ui'
 **
-** Created: Thu Apr 25 15:00:52 2013
+** Created: Mon Apr 29 14:28:19 2013
 **      by: Qt User Interface Compiler version 4.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

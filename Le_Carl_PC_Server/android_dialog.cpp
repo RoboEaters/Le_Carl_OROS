@@ -18,6 +18,8 @@ Android_Dialog::Android_Dialog(QWidget *parent, Android_TCP_Object *android_obj,
     android_tcp = android_obj;
     the_phone_item = phone_item;
 
+    this->setFocusPolicy(Qt::StrongFocus);
+
     counter = 0;
 
     //    setModal(true);
@@ -481,16 +483,16 @@ void Android_Dialog::keyPressEvent(QKeyEvent *event)
 {
     switch(event->key())
     {
-    case Qt::Key_W: up_key_pressed = true;
+    case Qt::Key_W:        up_key_pressed = true;
         break;
 
-    case Qt::Key_A:left_key_pressed = true;
+    case Qt::Key_A:        left_key_pressed = true;
         break;
 
-    case Qt::Key_S: down_key_pressed = true;
+    case Qt::Key_S:        down_key_pressed = true;
         break;
 
-    case Qt::Key_D: right_key_pressed = true;
+    case Qt::Key_D:        right_key_pressed = true;
         break;
     }
 }
@@ -498,16 +500,16 @@ void Android_Dialog::keyReleaseEvent(QKeyEvent *event)
 {
     switch(event->key())
     {
-    case Qt::Key_W: up_key_pressed = false;
+    case Qt::Key_W:        up_key_pressed = false;
         break;
 
-    case Qt::Key_A:left_key_pressed = false;
+    case Qt::Key_A:        left_key_pressed = false;
         break;
 
-    case Qt::Key_S: down_key_pressed = false;
+    case Qt::Key_S:        down_key_pressed = false;
         break;
 
-    case Qt::Key_D: right_key_pressed = false;
+    case Qt::Key_D:        right_key_pressed = false;
         break;
     }
 }
@@ -515,14 +517,14 @@ void Android_Dialog::keyReleaseEvent(QKeyEvent *event)
 
 void Android_Dialog::upd_ioio_pwm()
 {
-    if (left_key_pressed)
+    if (left_key_pressed == true)
     {
         ui->left_label->setPixmap(left_pix_pressed);
         ui->right_label->setPixmap(right_pix_released);
 
         if(pwm_servo > min_servo) pwm_servo -= step_servo;
     }
-    else if(right_key_pressed)
+    else if(right_key_pressed == true)
     {
         ui->left_label->setPixmap(left_pix_released);
         ui->right_label->setPixmap(right_pix_pressed);
@@ -536,13 +538,13 @@ void Android_Dialog::upd_ioio_pwm()
         else if(pwm_servo > default_servo) pwm_servo-= step_servo;
     }
 
-    if (up_key_pressed)
+    if (up_key_pressed == true)
     {
         ui->up_label->setPixmap(up_pix_pressed);
         ui->down_label->setPixmap(down_pix_released);
         if(pwm_motor < max_motor) pwm_motor += step_motor;
     }
-    else if (down_key_pressed)
+    else if (down_key_pressed == true)
     {
         ui->up_label->setPixmap(up_pix_released);
         ui->down_label->setPixmap(down_pix_pressed);
